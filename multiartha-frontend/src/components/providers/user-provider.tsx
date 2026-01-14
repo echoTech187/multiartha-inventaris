@@ -25,7 +25,7 @@ export function UserProvider({
         if (!isAuthenticated) {
             router.replace("/login");
         }
-    })
+    }, [isAuthenticated, router]);
     return (
         <UserContext.Provider value={{ user, isAuthenticated }}>
             {children}

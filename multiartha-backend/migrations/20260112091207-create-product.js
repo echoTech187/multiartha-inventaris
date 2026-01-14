@@ -25,7 +25,7 @@ module.exports = {
         allowNull: true
       },
       price: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       is_active: {
         type: Sequelize.BOOLEAN,
@@ -36,7 +36,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

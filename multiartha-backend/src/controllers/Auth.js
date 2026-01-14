@@ -16,7 +16,7 @@ class AuthController {
         if (!token) {
             return res.status(401).json({ success: false, message: 'Akses ditolak', responseText: 'ACCESS_DENIED' });
         } else {
-            return res.status(200).json({ success: true, token: token, user: userExists.fullname, responseText: 'OK' });
+            return res.status(200).json({ success: true, token: token, user: userExists.fullname, responseText: 'OK', message: 'Login berhasil', description: `Selamat datang di MultiArtha ${userExists.fullname}` });
         }
     }
 
@@ -37,7 +37,7 @@ class AuthController {
                     fullname: userExists.fullname,
                     username: userExists.username,
                     email: userExists.email,
-                    role_id: userExists.role_id,
+                    role: userExists.role,
                     avatar: userExists.avatar
                 };
                 return res.status(200).json({
@@ -67,6 +67,7 @@ class AuthController {
             return res.status(500).json({ success: false, message: 'Terjadi kesalahan server', responseText: 'SERVER_ERROR' });
         }
     }
+
 }
 
 module.exports = new AuthController();

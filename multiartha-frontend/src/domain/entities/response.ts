@@ -10,3 +10,17 @@ export type ApiResponse = {
     token?: string | null,
     user?: UserInfo
 }
+
+export type DataTableResponse = {
+    success: boolean,
+    data?: [],
+    responseText?: string,
+    total?: number,
+    pageLength?: number,
+    currentPage?: number,
+    totalPage?: number,
+    message?: string,
+    error?: string,
+    description?: string | null,
+
+}

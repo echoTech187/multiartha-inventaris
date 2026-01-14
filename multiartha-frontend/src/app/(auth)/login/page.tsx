@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Image from "next/image";
 
 
 export default function LoginPage() {
@@ -29,7 +30,7 @@ export default function LoginPage() {
         if (state?.success) {
             toast.success(state.message, { description: state.description });
             router.replace("/", { scroll: false });
-        } else {
+        } else if (state?.error) {
             toast.error(state?.message);
         }
     }, [state, router]);
@@ -37,9 +38,10 @@ export default function LoginPage() {
 
     return (
         <Container className="flex justify-center items-center">
-            <Card title="Login" className="max-w-xl m-auto">
-                <CardHeader title="Login" >
-                    <CardTitle>Login</CardTitle>
+            <Card title="Login" className="max-w-xl m-auto border-0 shadow-none">
+                <CardHeader title="Login" className="flex flex-col justify-center items-center" >
+                    <Image alt="Logo" loading="eager" width={100} height={100} className="h-24 w-auto" src={`${process.env.NEXT_PUBLIC_BASE_URL}/globe.png`} />
+                    <CardTitle className="text-center text-2xl font-extrabold">MultiArta <br />Inventory Management System</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <CardDescription className="mb-6">Silahkan masukan username dan password untuk melanjutkan</CardDescription>

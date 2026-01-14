@@ -1,6 +1,6 @@
 "use server";
 import { authUseCase } from "@/di/modules";
-import { setCookie } from "@/lib/credentials";
+import { deleteCookie, setCookie } from "@/lib/credentials";
 import { toast } from "sonner";
 
 export async function loginHandle(prevState: unknown, formData: FormData) {
@@ -18,4 +18,10 @@ export async function loginHandle(prevState: unknown, formData: FormData) {
     } else {
         return response;
     }
+}
+
+export async function logoutHandle() {
+    const deleteCookies = await deleteCookie("token");
+    return deleteCookies;
+
 }

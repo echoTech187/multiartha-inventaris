@@ -9,11 +9,7 @@ export default async function Proxy(request: NextRequest) {
         return NextResponse.redirect(new URL("/", request.url));
     }
 
-    const protectedRoutes = config.matcher as string[];
-
-    const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
-
-    if (isProtectedRoute && !token) {
+    if (!token && !pathname.startsWith("/login")) {
         return NextResponse.redirect(new URL("/login", request.url));
     }
 
@@ -21,5 +17,5 @@ export default async function Proxy(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/', '/(dashboard)/:path*', '/(auth)/:path*', '/((?!api|_next/static|_next/image|favicon.ico).*)'],
+    matcher: ['/', '/(dashboard)/:path*', '/(auth)/:path*'],
 };
